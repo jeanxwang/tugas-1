@@ -53,3 +53,26 @@ Pertama, saya perhatikan setiap instruksi pada masing-masing poin. Lalu, dengan 
 
 #### JSON _by ID_
 ![](https://cdn.discordapp.com/attachments/1030834426126544907/1153737982780653660/image.png)
+
+
+# Tugas 4: Implementasi Autentikasi, Session, dan Cookies pada Django
+
+### Apa itu Django `UserCreationForm`, dan jelaskan apa kelebihan dan kekurangannya?
+
+Django `UserCreationForm` adalah kerangka formulir bawaan Python yang memungkinkan pengembang membuat fitur pendaftaran pengguna ke dalam aplikasinya tanpa harus membuat kodenya dari awal. Selain itu, `UserCreationForm` juga sudah mencakup fungsi untuk memvalidasi data yang dimasukkan ke dalam aplikasi, misalnya apakah email sudah pernah digunakan atau belum, serta apakah kata sandi sudah memenuhi syarat atau belum. Di sisi lain, Django `UserCreationForm` memadai untuk fungsi _register_ yang sederhana saja. Untuk mendapatkan fungsi yang lebih kompleks atau dengan kustomisasi tertentu, pengembang harus menulis kode sendiri. Tampilan yang dihasilkan juga sederhana. Kita harus menambahkan CSS dan HTML jika ingin memperoleh tampilan yang diinginkan.
+
+### Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+
+Auntentikasi adalah proses memverifikasi data yang _user_ masukkan saat login, sedangkan otorisasi adalah proses memastikan bahwa _user_ tersebut mempunyai akses pada aplikasi tersebut. Autentikasi penting untuk melindungi pengguna, mengingat bahwa tiap pengguna memiliki data yang unik dan merupakan privasi masing-masing. Otorisasi penting untuk pemilik aplikasi agar ia tahu siapa yang sedang mengakses sehingga dapat mengatur peran dan izin pengguna, serta untuk memastikan bahwa yang sedang mengakses merupakan pengguna yang sah.
+
+### Apa itu _cookies_ dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+
+_Cookies_ merupakan tempat menyimpan ID yang menunjuk ke data sesi pengguna agar pengguna dapat mengakses suatu aplikasi dalam satu _login_ saja setiap sesinya. Untuk menggunakan _cookies_, Django, mengimpor `HttpResponseRedirect` dan `reverse`. Lalu, `response.set_cookie('last_login', str(datetime.datetime.now()))` akan membuat _cookie_ **_last login_** dan menambahkannya ke dalam _response_. Selanjutnya, `'last_login': request.COOKIES['last_login']` akan menambahkan informasi _cookie_. Lalu, `delete_cookie()` akan menghapus data pengguna saat _logout_
+
+### Apakah penggunaan _cookies_ aman secara _default_ dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+
+Penggunaan _cookies_ secara _default_ sebenarnya sudah cukup aman. Namun, ada beberapa risiko potensial yang dapat dipertimbangkan untuk privasi aplikasi, antara lain, pencurian _cookie_ XSS, _session_ _fixation_, dan _cookie_ _poisoning_.
+
+### Jelaskan bagaimana cara kamu mengimplementasikan _checklist_ di atas secara _step-by-step_ (bukan hanya sekadar mengikuti tutorial).
+
+Saya mengikuti _checklist_ satu per satu dari awal dan untuk setiap intruksi, saya melihat panduan pada tutorial. Misal, pada langkah membuat fungsi _register_, _login_, dan _logout_, saya mengimplementasikan langkah-langkah untuk mengaplikasikan ketiga fungsi tersebut agar dapat digunakan sesuai keinginan, dan begitu seterusnya.
