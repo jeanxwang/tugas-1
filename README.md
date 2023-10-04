@@ -76,3 +76,107 @@ Penggunaan _cookies_ secara _default_ sebenarnya sudah cukup aman. Namun, ada be
 ### Jelaskan bagaimana cara kamu mengimplementasikan _checklist_ di atas secara _step-by-step_ (bukan hanya sekadar mengikuti tutorial).
 
 Saya mengikuti _checklist_ satu per satu dari awal dan untuk setiap intruksi, saya melihat panduan pada tutorial. Misal, pada langkah membuat fungsi _register_, _login_, dan _logout_, saya mengimplementasikan langkah-langkah untuk mengaplikasikan ketiga fungsi tersebut agar dapat digunakan sesuai keinginan, dan begitu seterusnya.
+
+
+# Tugas 5: Desain Web menggunakan HTML, CSS dan Framework CSS
+
+### Jelaskan manfaat dari setiap _element_ _selector_ dan kapan waktu yang tepat untuk menggunakannya.
+
+1. **Element Selector (Tag Selector)**:
+   - **Manfaat**: Selector ini memungkinkan kita untuk memilih semua elemen dalam dokumen HTML yang memiliki tag yang sama (misalnya, `<p>` atau `<div>`).
+   - **Kapan Menggunakannya**: Element selector berguna ketika kita ingin memberikan gaya khusus pada semua elemen dengan tag yang sama. Ini bisa digunakan untuk memberikan gaya dasar pada elemen-elemen ini secara umum.
+
+2. **ID Selector**:
+   - **Manfaat**: Selector ID memungkinkan kita untuk memilih elemen dengan atribut `id` tertentu. Elemen dengan ID adalah elemen yang unik dalam halaman.
+   - **Kapan Menggunakannya**: ID selector ideal untuk memberikan gaya atau manipulasi JavaScript pada elemen yang unik dan berbeda dalam halaman. Satu elemen hanya boleh memiliki satu ID, sehingga kita dapat merujuk elemen ini secara spesifik.
+
+3. **Class Selector**:
+   - **Manfaat**: Class selector memungkinkan kita untuk memilih elemen yang memiliki atribut `class` tertentu. Elemen dengan kelas yang sama dapat diidentifikasi dan diberi gaya dengan mudah.
+   - **Kapan Menggunakannya**: Class selector berguna ketika kita ingin memberikan gaya yang sama pada beberapa elemen yang memiliki karakteristik atau peran yang sama dalam halaman.
+
+### Jelaskan HTML5 Tag yang kamu ketahui.
+
+1. **Tag `<body>`**:
+   - **Fungsi**: Tag `<body>` digunakan sebagai wadah utama untuk semua konten yang akan ditampilkan di halaman web. Semua elemen, seperti teks, gambar, dan elemen lainnya, biasanya ditempatkan di dalam tag `<body>`.
+   - **Contoh Penggunaan**: 
+     ```html
+     <body>
+         <!-- Konten halaman web di sini -->
+     </body>
+     ```
+
+2. **Tag `<div>`**:
+   - **Fungsi**: Tag `<div>` digunakan untuk mengelompokkan atau mengatur elemen-elemen HTML lainnya dalam satu kotak. Ini memungkinkan Anda untuk membuat bagian-bagian dalam halaman web yang dapat diatur dengan gaya atau diubah dengan JavaScript.
+   - **Contoh Penggunaan**: 
+     ```html
+     <div>
+         <!-- Elemen-elemen di dalam div -->
+     </div>
+     ```
+
+3. **Tag `<br>`**:
+   - **Fungsi**: Tag `<br>` digunakan untuk membuat baris baru atau memindahkan teks atau elemen ke baris berikutnya. Ini sering digunakan untuk mengatur tata letak atau memberikan jarak vertikal antara elemen-elemen.
+   - **Contoh Penggunaan**: 
+     ```html
+     <p>Satu baris<br>dua baris</p>
+     ```
+
+4. **Tag `<tr>`**:
+   - **Fungsi**: Tag `<tr>` digunakan dalam tabel HTML untuk mendefinisikan baris tabel.
+   - **Contoh Penggunaan**: 
+     ```html
+     <table>
+         <tr>
+             <td>Kolom 1</td>
+             <td>Kolom 2</td>
+         </tr>
+     </table>
+     ```
+
+5. **Tag `<th>`**:
+   - **Fungsi**: Tag `<th>` digunakan dalam tabel HTML untuk mendefinisikan sel kepala (header) tabel. Biasanya digunakan dalam baris pertama atau pertama dari setiap kolom dalam tabel.
+   - **Contoh Penggunaan**: 
+     ```html
+     <table>
+         <tr>
+             <th>Nama</th>
+             <th>Usia</th>
+         </tr>
+     </table>
+     ```
+
+### Jelaskan perbedaan antara _margin_ dan _padding_.
+
+Dalam CSS, **Margin** dan **Padding** adalah dua konsep penting yang digunakan untuk mengatur tata letak dan jarak antara elemen-elemen HTML. Keduanya memiliki perbedaan dalam fungsinya dan lokasi relatif di dalam model kotak CSS yang disebut "Box Model."
+
+#### Margin:
+
+- **Fungsi**: Margin adalah unsur Box Model CSS yang bertanggung jawab untuk mengatur jarak antara elemen saat berada di luar _border_ elemen tersebut. Margin adalah area di sekitar elemen yang bersifat transparan dan tidak dapat diisi dengan warna atau konten. Margin sering digunakan untuk memberikan jarak antara elemen dengan elemen lain di sekitarnya, sehingga mengontrol tata letak keseluruhan halaman.
+- **Lokasi**: Margin terletak di luar elemen HTML.
+- **Contoh Penggunaan**: Misalnya, ketika kita ingin memberikan jarak antara dua elemen div dalam layout halaman, kita akan mengatur margin di atas, bawah, kiri, atau kanan elemen tersebut.
+
+#### Padding:
+
+- **Fungsi**: Padding adalah unsur Box Model CSS yang mengatur jarak antara _border_ elemen dengan kontennya. Padding adalah area di sekitar konten elemen yang dapat diisi dengan warna atau konten tambahan. Padding berguna untuk mengontrol jarak antara konten elemen dan _border_nya.
+- **Lokasi**: Padding terletak di dalam elemen HTML, di antara konten dan _border_.
+- **Contoh Penggunaan**: Misalnya, ketika kita ingin memberikan ruang di dalam elemen tombol untuk membuat teks atau ikon terlihat lebih baik, kita akan mengatur padding di dalam elemen tersebut.
+
+### Jelaskan perbedaan antara _framework_ CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+
+- **Tailwind CSS** membangun tampilan dengan menggabungkan kelas-kelas utilitas yang telah didefinisikan sebelumnya, sedangkan **Bootstrap** menggunakan gaya dan komponen yang telah didefinisikan dan siap digunakan.
+- **Tailwind CSS** memiliki file CSS yang lebih kecil dan hanya memuat kelas-kelas utilitas yang diperlukan, sementara **Bootstrap** memiliki file CSS yang lebih besar karena termasuk banyak komponen yang telah didefinisikan.
+- **Tailwind CSS** memberikan fleksibilitas dan adaptabilitas yang tinggi terhadap proyek, sementara **Bootstrap** sering menghasilkan tampilan yang lebih konsisten di seluruh proyek berkat komponen yang telah didefinisikan.
+
+**Tailwind CSS** sebaiknya digunakan ketika:
+
+- Kita ingin memiliki kendali yang lebih besar atas tampilan dan gaya elemen-elemen Anda dengan menggabungkan kelas-kelas utilitas.
+- Kita paham tentang kelas-kelas utilitas yang tersedia dan bagaimana menggabungkannya untuk mencapai tampilan yang diinginkan.
+
+**Bootstrap** sebaiknya digunakan ketika:
+
+- Kita ingin mempercepat pengembangan dan tidak memiliki banyak waktu untuk menyesuaikan tampilan.
+- masih pemula atau tidak memiliki pengetahuan mendalam tentang CSS, karena Bootstrap menyediakan komponen siap pakai.
+
+### Jelaskan bagaimana cara kamu mengimplementasikan _checklist_ di atas secara _step-by-step_ (bukan hanya sekadar mengikuti tutorial).
+
+Pertama, saya menambahkan Bootstrap ke aplikasi dengan menambahkan tag ke `base.html`. Lalu, saya menambahkan sedikit desain untuk halaman `main` (daftar inventori), `login`, `register`, serta halaman **Add Product** dengan beberapa referensi Bootstrap di internet dan dari apa yang telah saya kerjakan di Tutorial 4 juga.
