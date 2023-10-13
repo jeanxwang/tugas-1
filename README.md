@@ -180,3 +180,60 @@ Dalam CSS, **Margin** dan **Padding** adalah dua konsep penting yang digunakan u
 ### Jelaskan bagaimana cara kamu mengimplementasikan _checklist_ di atas secara _step-by-step_ (bukan hanya sekadar mengikuti tutorial).
 
 Pertama, saya menambahkan Bootstrap ke aplikasi dengan menambahkan tag ke `base.html`. Lalu, saya menambahkan sedikit desain untuk halaman `main` (daftar inventori), `login`, `register`, serta halaman **Add Product** dengan beberapa referensi Bootstrap di internet dan dari apa yang telah saya kerjakan di Tutorial 4 juga.
+
+
+# Tugas 6: JavaScript dan Asynchronous JavaScript
+
+### Jelaskan perbedaan antara _asynchronous programming_ dengan _synchronous programming_.
+
+**Synchronous Programming (Pemrograman Sinkron):**
+
+- Tugas dieksekusi satu per satu secara berurutan.
+- Program menunggu setiap tugas selesai sebelum melanjutkan.
+
+**Asynchronous Programming (Pemrograman Asinkron):**
+
+- Tugas dieksekusi tanpa harus menunggu tugas sebelumnya selesai.
+- Program melanjutkan eksekusi sementara tugas yang mungkin memakan waktu dilakukan di latar belakang.
+
+### Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma _event-driven programming_. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+
+Paradigma **event-driven programming** adalah pendekatan dalam pemrograman di mana program merespons peristiwa atau kejadian (events) yang terjadi, daripada menjalankan tugas secara berurutan. Dalam paradigma ini, program akan "mendengarkan" atau "mengamati" peristiwa dan mengeksekusi tindakan tertentu ketika peristiwa tersebut terjadi. Ini memungkinkan program untuk menjadi responsif terhadap input pengguna dan perubahan keadaan tanpa harus menunggu tugas sebelumnya selesai.
+
+Dalam blok JavaScript, terdapat event listener yang mengamati peristiwa "DOMContentLoaded". Event ini akan dipicu ketika halaman HTML telah sepenuhnya dimuat. Ini memungkinkan kode JavaScript untuk dijalankan setelah halaman siap.
+
+**Contoh:**
+
+```javascript
+document.addEventListener("DOMContentLoaded", function () {
+    // Kode yang akan dijalankan setelah halaman dimuat.
+});
+```
+
+### Jelaskan penerapan asynchronous programming pada AJAX.
+
+Penerapan asynchronous programming pada AJAX memungkinkan permintaan asinkronus ke server, yang berarti program dapat melanjutkan eksekusi tanpa harus menunggu respons dari server selesai. Dengan event handling, pengembang dapat menentukan tindakan yang harus diambil ketika respons diterima, menjadikan aplikasi web lebih responsif.
+
+### Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada _library_ jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+
+#### Fetch API
+
+- **Natif**: Fetch API adalah bagian dari JavaScript, sehingga tidak memerlukan pustaka tambahan. Ini adalah standar modern yang didukung oleh semua browser utama.
+
+- **Promise-based**: Fetch API menggunakan konsep Promise, yang membuat pengkodean asynchronous lebih mudah dibaca dan dipahami.
+
+- **Fungsionalitas Dasar**: Meskipun fetch sangat kuat, ia biasanya digunakan untuk mengambil data dari server (GET) dan mengirimkan data (POST). Operasi lain seperti PUT dan DELETE juga bisa diimplementasikan, tetapi memerlukan kode tambahan.
+
+#### jQuery
+
+- **Pustaka Tambahan**: jQuery adalah pustaka JavaScript yang mencakup banyak fungsi bawaan. Ini lebih besar dalam ukuran daripada Fetch API, yang berarti pengguna harus mengunduh lebih banyak data saat memuat halaman.
+
+- **Callback-based**: jQuery menggunakan gaya callback yang lebih lama untuk mengelola permintaan AJAX. Ini bisa membuat kode terlihat lebih rumit, terutama dalam proyek-proyek besar.
+
+- **Kemudahan Penggunaan**: jQuery memiliki fungsi AJAX yang cukup kuat dan mudah digunakan. Ini memiliki banyak utilitas yang memudahkan dalam menangani permintaan AJAX.
+
+Keputusan akhir tergantung pada kebutuhan proyek, preferensi pribadi, dan apakah ingin mengadopsi pendekatan yang lebih modern dengan Fetch API atau tetap menggunakan utilitas kaya jQuery dalam proyek.
+
+### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+Pertama, saya membuat fungsi untuk mengembalikan data JSON. Lalu, saya mengubah sedikit kode untuk men-_display_ data karena sebelumnya saya belum menggunakan _cards_. Selanjutnya, saya membuat fungsi untuk menambahkan data dengan AJAX, dilanjutkan dengan membuat _form_ untuk menambahkan produk.

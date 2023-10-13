@@ -1,6 +1,12 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}   
 
 {% block content %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
 <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
     <div class="container-fluid">
@@ -28,29 +34,40 @@
     <h5>Class:</h5>
     <p>{{class}}</p>
 
-    <table class="table table-striped table-bordered">
-        <thead class="thead-dark">
-            <tr>
-                <th>Name</th>
-                <th>Amount</th>
-                <th>Description</th>
-                <th>Date Added</th>
-            </tr>
-        </thead>
+    <table id="product_table"></table>
 
-        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-
-        <tbody>
-            {% for product in products %}
-                <tr>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.amount }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.date_added }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form" onsubmit="return false;">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="amount" class="col-form-label">Amount:</label>
+                            <input type="number" class="form-control" id="amount" name="amount"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="col-form-label">Description:</label>
+                            <textarea class="form-control" id="description" name="description"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product by AJAX</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <br />
     
@@ -61,5 +78,82 @@
             Add New Product
         </button>
     </a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const productTable = document.getElementById("product_table");
+
+            async function fetchData() {
+                try {
+                    const response = await fetch("{% url 'main:get_product_json' %}");
+                    const data = await response.json();
+
+                    productTable.innerHTML = ""; // Clear the table
+
+                    data.forEach((item) => {
+                        const card = document.createElement("div");
+                        card.classList.add("card");
+
+                        const cardBody = document.createElement("div");
+                        cardBody.classList.add("card-body");
+
+                        // Populate card content with product data
+                        cardBody.innerHTML = `
+                            <h5 class="card-title">${item.fields.name}</h5>
+                            <p class="card-text">Amount: ${item.fields.amount}</p>
+                            <p class="card-text">${item.fields.description}</p>
+                            <p class="card-text">Date Added: ${item.fields.date_added}</p>
+                        `;
+
+                        card.appendChild(cardBody);
+                        productTable.appendChild(card);
+                    });
+                } catch (error) {
+                    console.error("Error fetching data:", error);
+                }
+            }
+
+            // Trigger the fetchData function to load data when the page loads
+            fetchData();
+        });
+
+        async function getProducts() {
+            return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+        }
+
+        async function refreshProducts() {
+            document.getElementById("product_table").innerHTML = ""
+            const products = await getProducts()
+            let htmlString = `<tr>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Description</th>
+                <th>Date Added</th>
+            </tr>`
+            products.forEach((item) => {
+                htmlString += `\n<tr>
+                <td>${item.fields.name}</td>
+                <td>${item.fields.amount}</td>
+                <td>${item.fields.description}</td>
+                <td>${item.fields.date_added}</td>
+            </tr>` 
+            })
+            
+            document.getElementById("product_table").innerHTML = htmlString
+        }
+
+        refreshProducts()
+
+        function addProduct() {
+            fetch("{% url 'main:add_product_ajax' %}", {
+                method: "POST",
+                body: new FormData(document.querySelector('#form'))
+            }).then(refreshProducts)
+
+            document.getElementById("form").reset()
+            document.getElementById("button_add").onclick = addProduct
+            return false
+        }
+    </script>
     
 {% endblock content %}
