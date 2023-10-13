@@ -237,3 +237,6 @@ Keputusan akhir tergantung pada kebutuhan proyek, preferensi pribadi, dan apakah
 ### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
 Pertama, saya membuat fungsi untuk mengembalikan data JSON. Lalu, saya mengubah sedikit kode untuk men-_display_ data karena sebelumnya saya belum menggunakan _cards_. Selanjutnya, saya membuat fungsi untuk menambahkan data dengan AJAX, dilanjutkan dengan membuat _form_ untuk menambahkan produk.
+
+
+### [Buka Aplikasi](http://aliyah-faza-tugas.pbp.cs.ui.ac.id/)
